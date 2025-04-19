@@ -1,0 +1,19 @@
+Given head, the head of a linked list, determine if the linked list has a cycle in it.
+
+1: Initialise two pointers, `slow` and `fast`, to the head of the linked list. `slow` will advance one step at a time, while `fast` will advance two steps at a time. These pointers will move simultaneously.
+2:fast` or `fast.next` reaches the end of the linked list (i.e., becomes null). In this case, there is no loop in the linked list ie. the linked list is linear, and the algorithm terminates by returning false.
+3:`fast` and `slow` pointers meet at the same node. This indicates the presence of a loop in the linked list, and the algorithm terminates by returning `true`
+
+Code:
+bool hasCycle(ListNode *head) {
+        ListNode*fast=head;
+        ListNode*slow=head;
+        while(fast!=NULL && fast->next!=NULL){
+            slow = slow->next;
+            fast = fast->next->next;
+            if(slow==fast){
+                return true;
+            }
+        }
+        return false;
+    }
